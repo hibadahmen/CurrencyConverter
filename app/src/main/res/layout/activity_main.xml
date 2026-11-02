@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/screen_background"
+tools:context=".MainActivity">
+
+<!-- Sépare la zone de conversion du clavier -->
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/headerGuideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.48" />
+
+<!-- PANNEAU DE CONVERSION -->
+<LinearLayout
+    android:id="@+id/headerPanel"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:orientation="vertical"
+    android:paddingStart="24dp"
+    android:paddingTop="12dp"
+    android:paddingEnd="24dp"
+    android:paddingBottom="16dp"
+    android:background="@drawable/bg_header"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/headerGuideline"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <TextView
+        android:id="@+id/tvTitre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_title"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/screen_subtitle"
+        android:textColor="@color/soft_white"
+        android:textSize="12sp"
+        android:gravity="center" />
+
+    <!-- Devise source et montant -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/source_label"
+                android:textColor="@color/soft_white"
+                android:textSize="11sp"
+                android:letterSpacing="0.12" />
+
+            <Spinner
+                android:id="@+id/spDeviseSource"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:popupBackground="@color/white"
+                android:backgroundTint="@color/navy"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvMontant"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:background="@drawable/bg_amount"
+            android:gravity="end|center_vertical"
+            android:text="@string/initial_amount"
+            android:textColor="@color/white"
+            android:textSize="48sp"
+            android:maxLines="1"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeMaxTextSize="48sp"
+            app:autoSizeStepGranularity="1sp" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnInverser"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_swap"
+        android:padding="10dp"
+        android:contentDescription="@string/swap_description" />
+
+    <!-- Devise cible et résultat -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/target_label"
+                android:textColor="@color/soft_white"
+                android:textSize="11sp"
+                android:letterSpacing="0.12" />
+
+            <Spinner
+                android:id="@+id/spDeviseCible"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:popupBackground="@color/white"
+                android:backgroundTint="@color/navy"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvResultat"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:background="@drawable/bg_amount"
+            android:gravity="end|center_vertical"
+            android:text="@string/empty_result"
+            android:textColor="@color/white"
+            android:textSize="48sp"
+            android:maxLines="1"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeMaxTextSize="48sp"
+            app:autoSizeStepGranularity="1sp"
+            tools:text="102.56" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnConvertir"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_convert"
+        app:backgroundTint="@null"
+        android:text="@string/convert"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textAllCaps="false" />
+
+</LinearLayout>
+
+<!-- CLAVIER NUMÉRIQUE -->
+<TextView
+    android:id="@+id/tvKeypadLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:text="@string/keypad_label"
+    android:textColor="@color/muted_text"
+    android:textSize="11sp"
+    android:letterSpacing="0.12"
+    app:layout_constraintTop_toBottomOf="@id/headerPanel"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+<TableLayout
+    android:id="@+id/tableClavier"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="8dp"
+    android:stretchColumns="*"
+    app:layout_constraintTop_toBottomOf="@id/tvKeypadLabel"
+    app:layout_constraintBottom_toTopOf="@id/tvFooter"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btn7"
+            style="@style/KeypadButton"
+            android:text="@string/key_7" />
+
+        <Button
+            android:id="@+id/btn8"
+            style="@style/KeypadButton"
+            android:text="@string/key_8" />
+
+        <Button
+            android:id="@+id/btn9"
+            style="@style/KeypadButton"
+            android:text="@string/key_9" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btn4"
+            style="@style/KeypadButton"
+            android:text="@string/key_4" />
+
+        <Button
+            android:id="@+id/btn5"
+            style="@style/KeypadButton"
+            android:text="@string/key_5" />
+
+        <Button
+            android:id="@+id/btn6"
+            style="@style/KeypadButton"
+            android:text="@string/key_6" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/KeypadButton"
+            android:text="@string/key_1" />
+
+        <Button
+            android:id="@+id/btn2"
+            style="@style/KeypadButton"
+            android:text="@string/key_2" />
+
+        <Button
+            android:id="@+id/btn3"
+            style="@style/KeypadButton"
+            android:text="@string/key_3" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btnClear"
+            style="@style/KeypadButton"
+            android:text="@string/key_clear"
+            android:textColor="@color/clear_red"
+            android:contentDescription="@string/clear_description" />
+
+        <Button
+            android:id="@+id/btn0"
+            style="@style/KeypadButton"
+            android:text="@string/key_0" />
+
+        <Button
+            android:id="@+id/btnPoint"
+            style="@style/KeypadButton"
+            android:text="@string/key_dot" />
+    </TableRow>
+
+</TableLayout>
+
+<TextView
+    android:id="@+id/tvFooter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:text="@string/fixed_rates_note"
+    android:textColor="@color/muted_text"
+    android:textSize="11sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

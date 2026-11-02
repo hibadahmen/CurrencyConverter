@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CurrencyConverter</string>
+    <string name="screen_title">Currency Converter</string>
+    <string name="screen_subtitle">Une devise, de nouvelles possibilités.</string>
+
+    <string name="source_label">DEPUIS</string>
+    <string name="target_label">VERS</string>
+
+    <string name="convert">Convertir</string>
+    <string name="swap_description">Inverser les devises</string>
+    <string name="keypad_label">SAISIR UN MONTANT</string>
+    <string name="fixed_rates_note">Taux fixes • Exercice pédagogique</string>
+
+    <string name="initial_amount">0</string>
+    <string name="empty_result"></string>
+    <string name="amount_required">Veuillez saisir un montant</string>
+    <string name="invalid_amount">Montant invalide</string>
+
+    <string name="key_0">0</string>
+    <string name="key_1">1</string>
+    <string name="key_2">2</string>
+    <string name="key_3">3</string>
+    <string name="key_4">4</string>
+    <string name="key_5">5</string>
+    <string name="key_6">6</string>
+    <string name="key_7">7</string>
+    <string name="key_8">8</string>
+    <string name="key_9">9</string>
+    <string name="key_dot">.</string>
+    <string name="key_clear">C</string>
+    <string name="clear_description">Effacer le montant et le résultat</string>
+
+    <string-array name="devises">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>TND</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>CAD</item>
+    </string-array>
+
+</resources>
